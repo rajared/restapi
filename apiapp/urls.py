@@ -9,10 +9,7 @@ urlpatterns =[
     path('add1/',post1),
     path('update1/<int:id>/',update1),
     path('delete1/<int:id>/',delete1),
-    path('list/',views.Musiclistview.as_view()),
-    path('create/',views.Musiccreateview.as_view()),
-    path('retrieve/<int:pk>/',views.Musicgetview.as_view()),
-    path('destroy/<int:pk>/',views.Musicdestroyview.as_view()),
-    path('update/<int:pk>/',views.Musicupdateview.as_view()),
+    path('list/',views.Music_get_list_or_create_operations_view.as_view()),
+    path('single/<int:pk>',views.Music_urd_operations_view.as_view()),
 
 ]

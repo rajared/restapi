@@ -40,30 +40,24 @@ def delete1(request,id):
 
 
 """"""""""""""""class based views"""""""""""""''"""""""""
-class Musiclistview(GenericAPIView,ListModelMixin):
+class Music_get_list_or_create_operations_view(GenericAPIView,ListModelMixin,CreateModelMixin):
     queryset=Musician.objects.all()
     serializer_class=MusicSerializer
     def get(self,request):
         return self.list(request)
-class Musicgetview(GenericAPIView,RetrieveModelMixin):
-    queryset=Musician.objects.all()
-    serializer_class=MusicSerializer
-    def get(self,request,**kwargs):
-        return self.retrieve(request,**kwargs)
-class Musiccreateview(GenericAPIView,CreateModelMixin):
-    queryset=Musician.objects.all()
-    serializer_class=MusicSerializer
-    def post(self,request,**kwargs):
-        return self.create(request,**kwargs)
-class Musicdestroyview(GenericAPIView,DestroyModelMixin):
+    def post(self,request):
+        return self.create(request)
+
+class Music_urd_operations_view(GenericAPIView,DestroyModelMixin,UpdateModelMixin,RetrieveModelMixin):
     queryset=Musician.objects.all()
     serializer_class=MusicSerializer
     def delete(self,request,**kwargs):
         return self.destroy(request,**kwargs)
-class Musicupdateview(GenericAPIView,UpdateModelMixin):
-    queryset=Musician.objects.all()
-    serializer_class=MusicSerializer
     def put(self,request,**kwargs):
         return self.update(request,**kwargs)
+    def get(self,request,**kwargs):
+        return self.retrieve(request,**kwargs)
+
+
 
 
